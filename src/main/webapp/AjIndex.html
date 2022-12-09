@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style >
+ *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        html{
+        height:100%;
+        box-sizing: border-box;
+        }
+        body{
+            min-height: 100%;
+            display: flex;
+            flex-direction:column;
+            align-items: center;
+            justify-content: center;
+             /*background color */
+            background-color:#0c192c;
+            padding-top: 6.74rem;
+            padding-bottom: 6.74rem;
+            box-sizing: inherit;  
+        
+        }
+        .container{
+            position: relative;
+            max-width:1200px;
+            width: 100%;
+            border-radius: 6px;
+            padding: 30px;
+            margin: 0 15px;
+            background-color: #ffff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        .container header{
+            position: relative;
+            font-size: 20px;
+            font-weight: 600;
+            color:#333;
+        }
+        .container header::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 3px;
+            width: 27px;
+            border-radius: 8px;
+            background-color: #4070f4;
+        }
+        .container form{
+            position: relative;
+            margin: 16px;
+            min-height: 490px;
+            background-color: #f4f4f4;
+            border-radius: 6px;
+
+        }
+        .container form .details{
+            margin-top: 30px;
+
+        }
+        .container form .title{
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            margin: 6px 0;
+            color: #333;
+
+        }
+        .container form .fields{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        form .fields .input-fields{
+            display: flex;
+            width: calc(100% /3 - 15px);
+            flex-direction: column;
+            margin: 4px 0;
+
+        
+        }
+        .input-fields label{
+            font-size: 15px;
+            font-weight: 500;
+            color: #2e2e2e;
+
+        }
+        .input-fields input{
+            outline: none;
+            font-size: 14px;
+            font-weight: 400;
+            color: #333;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 0 15px;
+            height: 42px;
+            margin: 8px 0;
+        } 
+       
+     .input-fields input:is(:focus, :valid){
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+	}
+	.input-fields input[type="radio"]{
+		height:20px;
+		margin:2px;
+		width: calc(100% /3 - 100px);
+		border:none;
+		display: inline-block;
+		flex-direction: column;
+	}
+	ion-icon {
+  	color: #333;
+  	font-size: 24px;
+	}
+	#divresult{
+		position: absolute;
+		top:145%;
+		left:50%;
+		transform:translate(-50%, -50%);
+		
+	}
+		table{
+		border-collapse: collapse;
+		width:1600px;
+		height:800px;
+		border: 1px, solid #bdc3c7;
+		box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0,0,0,0.2);
+		background-color: #f2f2f1;
+	}
+	tr{
+	 transition: all .2s ease-in;
+	 cursor: pointer;
+	}
+	
+	th{
+	padding:12px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	}
+	tr:hover{
+	background-color: #f5f5f5;
+	transform: scale(1.02);
+	box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0,0,0,0.2);
+	}
+	.heading-table{
+	
+	background-color: #f1f1f1;
+	display: block;
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 5px 0;
+    color: #333;
+	}
+	.heading-table-update{
+	background-color: #f1f1f1;
+	display: inline;
+    margin-bottom: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 5px 0;
+    color: #333;	
+	}
+	</style>
+	<script>
+	var obj=null;
+	
+	function fetchTeacher(){
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "FetchRecordsServlet", true);
+		obj.send();
+		alert("ajax called");
+		
+	}
+	function ajaxoutput(){
+		if(obj.readyState==4 && obj.status==200) {
+			document.getElementById("divresult")
+			.innerHTML=obj.responseText;
+		}
+	}
+	
+	function teacherRegistration(){
+		obj= new XMLHttpRequest();
+		var fname=document.form1.fname.value;
+		var lname=document.form1.lname.value;
+		var gender=document.form1.gender.value;
+		var address=document.form1.address.value;
+		var city=document.form1.city.value;
+		var pin=document.form1.pin.value;
+		var mobileno=document.form1.mobileno.value;
+		var qualification=document.form1.qualification.value;
+		var designation=document.form1.designation.value;
+		var specialization=document.form1.specialization.value;
+		var birthdate=document.form1.birthdate.value;
+		var joiningdate=document.form1.joiningdate.value;
+		var str="fname="+fname+"&lname="+lname+"&gender="+gender+"&address="+address+"&city="+city+"&pin="+pin+"&mobileno="+mobileno+
+		"&qualification="+qualification+"&designation="+designation+"&specialization="+specialization+"&birthdate="+birthdate+"&joiningdate="+joiningdate;
+		alert(str);
+		
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("POST", "RecordInsertServlet", true);
+		obj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		obj.send(str);
+		alert("Teacher insert called")
+		
+	}
+	function functionUpdate(teacherid){
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "UpdateServlet11.jsp?teacherid="+teacherid, true);
+		obj.send();
+	}
+	function UpdateRecord(){
+		obj= new XMLHttpRequest();
+		var teacherid=document.formupdate.teacherid.value;
+		var fname=document.formupdate.fname.value;
+		var lname=document.formupdate.lname.value;
+		var gender=document.formupdate.gender.value;
+		var address=document.formupdate.address.value;
+		var city=document.formupdate.city.value;
+		var pin=document.formupdate.pin.value;
+		var mobileno=document.formupdate.mobileno.value;
+		var qualification=document.formupdate.qualification.value;
+		var designation=document.formupdate.designation.value;
+		var specialization=document.formupdate.specialization.value;
+		var birthdate=document.formupdate.birthdate.value;
+		var joiningdate=document.formupdate.joiningdate.value;
+		var str="teacherid="+teacherid+"&fname="+fname+"&lname="+lname+"&gender="+gender+"&address="+address+"&city="+city+"&pin="+pin+"&mobileno="+mobileno+
+		"&qualification="+qualification+"&designation="+designation+"&specialization="+specialization+"&birthdate="+birthdate+"&joiningdate="+joiningdate;
+		alert(str);
+		
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("POST", "UpdateServlet2", true);
+		obj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		obj.send(str);
+		
+		
+		
+	}
+	function deleteteach(teacherid){
+		alert("teacherid="+teacherid);
+		var str="teacherid="+teacherid;
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "DeleteServlet?teacherid="+teacherid, true);
+		obj.send();
+	}
+	function FetchDeletedTeacher(){
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "FetchDeletedRecordServlet", true);
+		obj.send();
+		alert("ajax called");
+	}
+	function Rejoin(teacherid){
+		alert("teacherid="+teacherid);
+		var str="teacherid="+teacherid;
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "RejoinServlet?teacherid="+teacherid, true);
+		obj.send();
+	}
+	
+</script>
+<body>
+<section>
+	 <div class="container">
+        <header>Registration Form</header>
+            <form name="form1" method="post">
+                <div class="form-first" >
+                    <div class="details personal" >
+                        <span class="title">Details of teacher</span>
+                        <div class="fields">
+                            <div class="input-fields">
+                                <label>First name</label>
+                                <input type="text" name="fname" placeholder="Enter first name here" required>
+                            </div>
+                            <div class="input-fields">
+                                <label>Last name</label>
+                                <input type="text" name="lname" placeholder="Enter last name here" required>
+                            </div>
+                            <div class="input-fields">
+                            <label for="Male">Male:
+                         	<input type="radio" name="gender" value="Male" id="Male">
+                         	<span class="male-icon"><ion-icon name="man-outline"></ion-icon></span>
+                         	</label>
+                         	<label for="Female">Female:
+                         	<input type="radio" name="gender" value="Female" id="Female">
+                         	<span class="Female-icon"><ion-icon name="woman-outline"></ion-icon></span>
+                         	</label>
+                            </div>
+                            <div class="input-fields">
+                                <label>Address</label>
+                                <input type="text" name="address" placeholder="Enter address here" required>
+                            </div>
+                            <div class="input-fields">
+                                <label>City</label>
+                                <input type="text" name="city" placeholder="Enter city name here" required>
+                            </div>
+                            <div class="input-fields">
+                                <label>Pin</label>
+                                <input type="text" name="pin" placeholder="Enter pin here" required>
+                            </div>
+                            <div class="input-fields">
+                                <label>Mobile no.</label>
+                                <input type="text" name="mobileno" placeholder="Enter mobile no. here" required>
+                            </div>
+                            <div class="input-fields">
+                                <label>Qualification</label>
+                                <input type="text" name="qualification" placeholder="Enter qualification here" required>
+                            </div>
+                            <div class="input-fields">
+                                <label>Designation</label>
+                                <input type="text" name="designation" placeholder="Enter designation here" required>
+                            </div>
+                            <div class="input-fields">
+                                <label>Specialization</label>
+                                <input type="text" name="specialization" placeholder="Enter specialization here" required>
+                            </div>
+                            <div class="input-fields">
+                                <label>Birth date</label>
+                                <input type="date" name="birthdate" placeholder="yyyy-mm-dd" required>
+                            </div>
+                            <div class="input-fields">
+                                <label>Joining date</label>
+                                <input type="date" name="joiningdate" placeholder="yyyy-mm-dd" required>
+                            </div>
+                            <input type="button" name="register" value="register new teacher" 
+							onclick="teacherRegistration();"/>
+                        </div>
+                    </div>
+                </div>
+				
+				<input type="button" name="btn1" value="fetch employees" 
+				onclick="fetchTeacher();"/>
+		<a href="#" onclick="fetchTeacher();">
+        <span>Fetch</span>
+         <div class="liquid"></div>
+   		 </a>
+            </form>
+	 </div>
+	</section>
+	
+	<div id="divresult" ></div>
+	
+</body>
+</html>

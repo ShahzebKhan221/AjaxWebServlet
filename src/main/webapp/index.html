@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>Teacher Crud Project</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-grad-school.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+<!--
+    
+TemplateMo 557 Grad School
+
+https://templatemo.com/tm-557-grad-school
+
+-->
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+ }
+ html{
+ height:100%;
+ box-sizing: border-box;
+ }
+ body{
+min-height: 100%;
+display: flex;         /*display-flex*/
+flex-direction:column; /*column*/
+align-items: center;
+justify-content: center;
+ /*background color */
+background:linear-gradient(90deg, #09203F , #537895);
+padding-top: 6.74rem;
+box-sizing: inherit;
+
+background-repeat: round;
+
+ }
+ .container{
+position: relative;
+max-width:1200px;
+border-radius: 6px;
+padding-left:6.24em;
+padding: 30px;
+margin: 0 15px;
+background-color: #ffff;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+align-items: center;
+margin-bottom: 6.74em;
+ }
+.container header{
+position: relative;
+font-size: 20px;
+font-weight: 600;
+color:#333;
+}
+.container header::before{
+ content: "";
+ position: absolute;
+ left: 0;
+ bottom: -2px;
+ height: 3px;
+ width: 27px;
+ border-radius: 8px;
+ background-color:linear-gradient(90deg, #09203F , #537895);
+}
+.container form{
+ position: relative;
+ margin: 16px;
+ min-height: 490px;
+ background-color: #f4f4f4;
+ border-radius: 6px;
+
+}
+.container form .details{
+    margin-top: 30px;
+
+}
+.container form .title{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+
+}
+.container form .fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+form .fields .input-fields{
+    display: flex;
+    width: calc(100% /3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+
+
+}
+.input-fields label{
+    font-size: 15px;
+    font-weight: 500;
+    color: #2e2e2e;
+
+}
+.input-fields input{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+} 
+  
+.input-fields input:is(:focus, :valid){
+       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+.input-fields input[type="radio"]{
+	height:20px;
+	margin:2px;
+	width: calc(100% /3 - 100px);
+	border:none;
+	display: inline-block;
+	flex-direction: column;
+}
+ion-icon {
+ 	color: #333;
+ 	font-size: 24px;
+}
+
+table{
+	border-collapse: collapse;
+	width:1600px;
+	height:800px;
+	border: 1px, solid #bdc3c7;
+	box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0,0,0,0.2);
+	background-color: #f2f2f1;
+}
+tr{
+ transition: all .2s ease-in;
+ cursor: pointer;
+}
+
+th{
+padding:12px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+tr:hover{
+background-color: #f5f5f5;
+transform: scale(1.02);
+box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0,0,0,0.2);
+}
+.heading-table{
+
+background-color: #f1f1f1;
+display: block;
+   margin-bottom: 8px;
+   font-size: 20px;
+   font-weight: 600;
+   margin: 5px 0;
+   color: #333;
+   padding: 17px;
+   
+}
+.heading-table-update{
+background-color: #f1f1f1;
+display: inline;
+   margin-bottom: 2px;
+   font-size: 14px;
+   font-weight: 600;
+   margin: 5px 0;
+   color: #333;
+ 	}
+.bttn{
+ position: relative;
+    padding: 20px 20px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 200px;
+    overflow: hidden;
+   	border:2px solid #f4f4f4 ;
+}
+.bttn span{
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 8px;
+   
+}
+.bttn .liquid{
+    position: absolute;
+    left: 0;
+    top: -80px;
+    width: 200px;
+    height: 200px;
+     background:linear-gradient(90deg, #09203F , #537895);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
+}
+.bttn:hover .liquid{
+    top: -120px;
+}
+.bttn .liquid:before,
+.bttn .liquid:after{
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top:0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+}
+.bttn .liquid:before{
+    border-radius: 45%;
+    background: #f4f4f4;
+    animation: animate 5s linear infinite;
+}
+bttn .liquid:after{
+    border-radius: 40%;
+    background: rgba(242, 240, 240, 0.5);
+animation: animate 10s linear infinite;   
+}
+@keyframes animate{
+    0%{
+        transform: translate(-50%, -75%) rotate(0deg);  
+    }
+    100%{
+        transform: translate(-50%, -75%) rotate(360deg);  
+    }
+
+}
+        
+#footer{
+	position:fixed;
+	bottom:0;
+	left:0;
+	color:#f2f2f2;
+	padding-top:10px;
+	background:linear-gradient(90deg, #09203F , #537895);
+	width:100%;
+	
+		
+}
+#divresult{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+margin:0 auto;
+width:100%;
+padding-bottom: 6.24em;
+}
+.main-header {
+ background:linear-gradient(90deg,#09203F , #537895);
+ height: 80px;
+ position: fixed;
+ z-index: 12;
+ width: 100%;
+ top: 0;
+}
+
+
+
+	
+
+</style>
+<script>
+	var obj=null;
+	
+	function fetchTeacher(){
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "FetchRecordsServlet", true);
+		obj.send();
+		alert("ajax called");
+		
+	}
+	function ajaxoutput(){
+		if(obj.readyState==4 && obj.status==200) {
+			document.getElementById("divresult")
+			.innerHTML=obj.responseText;
+		}
+	}
+	function insert(){
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "InsertT.jsp", true);
+		obj.send();
+		alert("Registration form called");
+	}
+	function howThisWorks(){
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "About.jsp", true);
+		obj.send();
+		alert("How it work called")
+	}
+	function teacherRegistration(){
+		obj= new XMLHttpRequest();
+		var fname=document.form1.fname.value;
+		var lname=document.form1.lname.value;
+		var gender=document.form1.gender.value;
+		var address=document.form1.address.value;
+		var city=document.form1.city.value;
+		var pin=document.form1.pin.value;
+		var mobileno=document.form1.mobileno.value;
+		var qualification=document.form1.qualification.value;
+		var designation=document.form1.designation.value;
+		var specialization=document.form1.specialization.value;
+		var birthdate=document.form1.birthdate.value;
+		var joiningdate=document.form1.joiningdate.value;
+		var str="fname="+fname+"&lname="+lname+"&gender="+gender+"&address="+address+"&city="+city+"&pin="+pin+"&mobileno="+mobileno+
+		"&qualification="+qualification+"&designation="+designation+"&specialization="+specialization+"&birthdate="+birthdate+"&joiningdate="+joiningdate;
+		alert(str);
+		
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("POST", "RecordInsertServlet", true);
+		obj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		obj.send(str);
+		alert("Teacher insert called")
+		
+	}
+	function functionUpdate(teacherid){
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "UpdateServlet11.jsp?teacherid="+teacherid, true);
+		obj.send();
+	}
+	function UpdateRecord(){
+		obj= new XMLHttpRequest();
+		var teacherid=document.formupdate.teacherid.value;
+		var fname=document.formupdate.fname.value;
+		var lname=document.formupdate.lname.value;
+		var gender=document.formupdate.gender.value;
+		var address=document.formupdate.address.value;
+		var city=document.formupdate.city.value;
+		var pin=document.formupdate.pin.value;
+		var mobileno=document.formupdate.mobileno.value;
+		var qualification=document.formupdate.qualification.value;
+		var designation=document.formupdate.designation.value;
+		var specialization=document.formupdate.specialization.value;
+		var birthdate=document.formupdate.birthdate.value;
+		var joiningdate=document.formupdate.joiningdate.value;
+		var str="teacherid="+teacherid+"&fname="+fname+"&lname="+lname+"&gender="+gender+"&address="+address+"&city="+city+"&pin="+pin+"&mobileno="+mobileno+
+		"&qualification="+qualification+"&designation="+designation+"&specialization="+specialization+"&birthdate="+birthdate+"&joiningdate="+joiningdate;
+		alert(str);
+		
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("POST", "UpdateServlet2", true);
+		obj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		obj.send(str);	
+	}
+	function deleteteach(teacherid){
+		alert("teacherid="+teacherid);
+		var str="teacherid="+teacherid;
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "DeleteServlet?teacherid="+teacherid, true);
+		obj.send();
+	}
+	function FetchDeletedTeacher(){
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "FetchDeletedRecordServlet", true);
+		obj.send();
+		alert("ajax called");
+	}
+	function Rejoin(teacherid){
+		alert("teacherid="+teacherid);
+		var str="teacherid="+teacherid;
+		obj=new XMLHttpRequest();
+		obj.onreadystatechange=ajaxoutput;
+		obj.open("GET", "RejoinServlet?teacherid="+teacherid, true);
+		obj.send();
+	}
+	
+</script>
+
+  </head>
+
+<body>
+  <!--header-->
+  
+  <header class="main-header clearfix" role="header">
+    <div class="logo">
+      <a href="#"><em>Teacher</em> Crud</a>
+    </div>
+    <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+    
+    <nav id="menu" class="main-nav" role="navigation">
+      <ul class="main-menu">
+      	<li><a href="index.html">Home</a></li>
+      	
+        <li><a href="#" onclick="insert();">Add record</a></li>
+      	
+        <li><a href="#" onclick="fetchTeacher();" >Available Records</a></li>
+
+        <li><a href="#" onclick="FetchDeletedTeacher();" >Deleted Records</a></li>
+        
+        <li><a href="#" onclick="howThisWorks();">How it works?</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+   <!-- ***** Main Banner Area Start ***** -->
+   <div id="divresult" >
+  <section class="section main-banner" id="top" data-section="section1">
+      <video autoplay muted loop id="bg-video">
+          <source src="assets/video/production ID_5198157.mp4" type="video/mp4" />
+      </video>
+
+      <div class="video-overlay header-text">
+          <div class="caption">
+              <h6>Teacher Data Management System</h6>
+              <h2><em>The Managed Desk</em> check availability. </h2>
+              <div class="main-button">
+                  <div class="scroll-to-section">
+              </div>
+          </div>
+      </div>
+  </section>
+  </div>	
+  <!-- ***** Main Banner Area End ***** -->
+<footer>
+<div id=footer>
+	<p>Developed and Designed by <a href="https://www.instgram.com/shahzeb_khan52">Shahzeb Khan</a>
+	
+	&copy; Copyright MECAPS Bhopal</p>
+</div>
+</footer>	
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
+	
+</body>
+</html>
