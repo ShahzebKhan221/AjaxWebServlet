@@ -295,7 +295,7 @@ padding-bottom: 6.24em;
 		obj.onreadystatechange=ajaxoutput;
 		obj.open("GET", "FetchRecordsServlet", true);
 		obj.send();
-		alert("ajax called");
+		//alert("ajax called");
 		
 	}
 	function ajaxoutput(){
@@ -309,14 +309,14 @@ padding-bottom: 6.24em;
 		obj.onreadystatechange=ajaxoutput;
 		obj.open("GET", "InsertT.jsp", true);
 		obj.send();
-		alert("Registration form called");
+		//alert("Registration form called");
 	}
 	function howThisWorks(){
 		obj=new XMLHttpRequest();
 		obj.onreadystatechange=ajaxoutput;
 		obj.open("GET", "About.jsp", true);
 		obj.send();
-		alert("How it work called")
+		//alert("How it work called")
 	}
 	function teacherRegistration(){
 		obj= new XMLHttpRequest();
@@ -334,13 +334,13 @@ padding-bottom: 6.24em;
 		var joiningdate=document.form1.joiningdate.value;
 		var str="fname="+fname+"&lname="+lname+"&gender="+gender+"&address="+address+"&city="+city+"&pin="+pin+"&mobileno="+mobileno+
 		"&qualification="+qualification+"&designation="+designation+"&specialization="+specialization+"&birthdate="+birthdate+"&joiningdate="+joiningdate;
-		alert(str);
+		//alert(str);
 		
 		obj.onreadystatechange=ajaxoutput;
 		obj.open("POST", "RecordInsertServlet", true);
 		obj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		obj.send(str);
-		alert("Teacher insert called")
+		//alert("Teacher insert called")
 		
 	}
 	function functionUpdate(teacherid){
@@ -366,7 +366,7 @@ padding-bottom: 6.24em;
 		var joiningdate=document.formupdate.joiningdate.value;
 		var str="teacherid="+teacherid+"&fname="+fname+"&lname="+lname+"&gender="+gender+"&address="+address+"&city="+city+"&pin="+pin+"&mobileno="+mobileno+
 		"&qualification="+qualification+"&designation="+designation+"&specialization="+specialization+"&birthdate="+birthdate+"&joiningdate="+joiningdate;
-		alert(str);
+		//alert(str);
 		
 		obj=new XMLHttpRequest();
 		obj.onreadystatechange=ajaxoutput;
@@ -375,7 +375,7 @@ padding-bottom: 6.24em;
 		obj.send(str);	
 	}
 	function deleteteach(teacherid){
-		alert("teacherid="+teacherid);
+		//alert("teacherid="+teacherid);
 		var str="teacherid="+teacherid;
 		obj=new XMLHttpRequest();
 		obj.onreadystatechange=ajaxoutput;
@@ -387,10 +387,10 @@ padding-bottom: 6.24em;
 		obj.onreadystatechange=ajaxoutput;
 		obj.open("GET", "FetchDeletedRecordServlet", true);
 		obj.send();
-		alert("ajax called");
+		//alert("ajax called");
 	}
 	function Rejoin(teacherid){
-		alert("teacherid="+teacherid);
+		//alert("teacherid="+teacherid);
 		var str="teacherid="+teacherid;
 		obj=new XMLHttpRequest();
 		obj.onreadystatechange=ajaxoutput;
